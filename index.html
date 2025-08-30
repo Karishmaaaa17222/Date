@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffe4ec, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #d63384;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+    .message {
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px 30px;
+      margin: 15px;
+      font-size: 1.2em;
+      color: #c2185b;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .message:nth-child(2) { animation-delay: 1s; }
+    .message:nth-child(3) { animation-delay: 2s; }
+    .message:nth-child(4) { animation-delay: 3s; }
+
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>A little garden, just for you 🌸</h1>
+
+  <div class="message">Every flower reminds me of you.</div>
+  <div class="message">Pink for warmth, white for purity—just like your smile.</div>
+  <div class="message">This little garden is only for you.</div>
+
+  <script>
+    // Generate floating flowers
+    for (let i = 0; i < 15; i++) {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.textContent = "🌸";
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = 10 + Math.random() * 10 + "s";
+      flower.style.animationDelay = i + "s";
+      document.body.appendChild(flower);
+    }
+  </script>
+</body>
+  </html>
