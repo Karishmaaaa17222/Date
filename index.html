@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,8 +8,8 @@
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ffe4ec, #ffffff);
-      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #ffffff);
+      font-family: 'Poppins', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -18,47 +18,66 @@
       padding: 40px 20px;
     }
     h1 {
-      color: #d63384;
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin-bottom: 30px;
       text-align: center;
-      animation: fadeIn 2s ease forwards;
+      background: linear-gradient(90deg, #d63384, #ff8fa3, #d63384);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
     }
     .message {
       background: rgba(255,255,255,0.85);
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 20px 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 20px 35px;
       margin: 15px;
       font-size: 1.2em;
-      color: #c2185b;
+      color: #b0235f;
       text-align: center;
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 1s ease forwards;
+      transform: translateY(40px);
+      animation: fadeUp 1.2s ease forwards;
     }
     .message:nth-child(2) { animation-delay: 1s; }
     .message:nth-child(3) { animation-delay: 2s; }
     .message:nth-child(4) { animation-delay: 3s; }
 
+    /* Floating flowers */
     .flower {
       position: absolute;
-      font-size: 24px;
+      font-size: 20px;
       animation: floatUp linear infinite;
-      opacity: 0;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      opacity: 0.8;
+      text-shadow: 0 0 8px rgba(255,182,193,0.8);
     }
     @keyframes floatUp {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      0% { transform: translateY(100vh) scale(0.6) rotate(0deg); opacity: 0; }
       20% { opacity: 1; }
-      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+      100% { transform: translateY(-120vh) scale(1) rotate(360deg); opacity: 0; }
+    }
+
+    /* Hearts */
+    .heart {
+      position: absolute;
+      color: #ff6f91;
+      font-size: 16px;
+      opacity: 0.6;
+      animation: floatHeart 12s linear infinite;
+    }
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+      20% { opacity: 0.6; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -70,16 +89,29 @@
   <div class="message">This little garden is only for you.</div>
 
   <script>
-    // Generate floating flowers
-    for (let i = 0; i < 15; i++) {
+    // Floating flowers 🌸
+    for (let i = 0; i < 20; i++) {
       const flower = document.createElement("div");
       flower.className = "flower";
       flower.textContent = "🌸";
       flower.style.left = Math.random() * 100 + "vw";
-      flower.style.animationDuration = 10 + Math.random() * 10 + "s";
-      flower.style.animationDelay = i + "s";
+      flower.style.fontSize = 20 + Math.random() * 25 + "px";
+      flower.style.animationDuration = 8 + Math.random() * 12 + "s";
+      flower.style.animationDelay = Math.random() * 10 + "s";
       document.body.appendChild(flower);
+    }
+
+    // Floating hearts ❤️
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = 14 + Math.random() * 18 + "px";
+      heart.style.animationDuration = 10 + Math.random() * 15 + "s";
+      heart.style.animationDelay = Math.random() * 10 + "s";
+      document.body.appendChild(heart);
     }
   </script>
 </body>
-  </html>
+</html>
